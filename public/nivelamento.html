@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Nivelamento | Gringo Talk Co.</title>
+  <meta name="description" content="Teste rápido de nivelamento gramatical da Gringo Talk Co.">
+  <link rel="icon" href="logo.png">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    :root {
+      --blue: #5146e5;
+      --blue-dark: #3930a8;
+      --blue-light: #eeedff;
+      --cream: #fffdf8;
+      --ink: #171717;
+      --muted: #6e6e78;
+      --line: #e7e5df;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(81, 70, 229, 0.10), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(81, 70, 229, 0.08), transparent 25%),
+        var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+    }
+
+    .topbar {
+      max-width: 880px;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      color: var(--blue);
+    }
+
+    .back-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      color: var(--blue);
+    }
+
+    .test-shell {
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+
+    .intro-card {
+      background: var(--blue);
+      color: white;
+      border-radius: 28px;
+      padding: 42px 42px 38px;
+      box-shadow: 0 24px 70px rgba(57, 48, 168, 0.20);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .intro-card::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.22);
+      right: -70px;
+      bottom: -90px;
+    }
+
+    .intro-kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      opacity: .78;
+      margin-bottom: 16px;
+    }
+
+    .intro-card h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(38px, 6vw, 62px);
+      line-height: .98;
+      letter-spacing: -.035em;
+      margin: 0 0 18px;
+      max-width: 620px;
+    }
+
+    .intro-card p {
+      margin: 0;
+      max-width: 580px;
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: .9;
+    }
+
+    .form-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 40px rgba(20, 20, 40, 0.06);
+    }
+
+    .field-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .field-help {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .text-input {
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid #d9d7d1;
+      padding: 13px 2px;
+      outline: none;
+      color: var(--ink);
+      background: transparent;
+      transition: border-color .2s ease;
+    }
+
+    .text-input:focus {
+      border-color: var(--blue);
+    }
+
+    .start-btn,
+    .next-btn,
+    .finish-btn {
+      border: 0;
+      border-radius: 999px;
+      background: var(--blue);
+      color: white;
+      padding: 14px 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .start-btn:hover,
+    .next-btn:hover,
+    .finish-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(81, 70, 229, .20);
+    }
+
+    .start-btn {
+      margin-top: 26px;
+    }
+
+    .question-card {
+      display: none;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 12px 40px rgba(20, 20, 40, 0.06);
+    }
+
+    .question-card.active {
+      display: block;
+      animation: appear .3s ease;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .progress-area {
+      margin-bottom: 28px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 9px;
+    }
+
+    .progress-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-percent {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 7px;
+      background: #ebeaf3;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 10%;
+      height: 100%;
+      background: var(--blue);
+      border-radius: inherit;
+      transition: width .3s ease;
+    }
+
+    .question-number {
+      color: var(--blue);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .question-text {
+      font-size: 20px;
+      line-height: 1.55;
+      font-weight: 600;
+      margin: 0 0 24px;
+    }
+
+    .options {
+      display: grid;
+      gap: 11px;
+    }
+
+    .option {
+      position: relative;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid #dedde5;
+      border-radius: 16px;
+      padding: 16px 17px;
+      cursor: pointer;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .option label:hover {
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .option-circle {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
+      border: 2px solid #aaa9b3;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .option input:checked + label {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .option input:checked + label .option-circle {
+      border-color: var(--blue);
+    }
+
+    .option input:checked + label .option-circle::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .option-text {
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .error-message {
+      display: none;
+      color: #c33a3a;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .question-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 12px;
+    }
+
+    .back-btn {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      cursor: pointer;
+      padding: 12px 4px;
+    }
+
+    .back-btn:hover {
+      color: var(--ink);
+    }
+
+    .result-card {
+      display: none;
+      background: var(--blue);
+      color: white;
+      border-radius: 28px;
+      padding: 48px 40px;
+      text-align: center;
+      box-shadow: 0 24px 70px rgba(57, 48, 168, 0.20);
+    }
+
+    .result-card.active {
+      display: block;
+      animation: appear .4s ease;
+    }
+
+    .result-star {
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    .result-card h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(38px, 6vw, 54px);
+      line-height: 1;
+      margin: 0 0 18px;
+    }
+
+    .result-card p {
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+      opacity: .9;
+    }
+
+    .result-card .finish-btn {
+      background: white;
+      color: var(--blue);
+    }
+
+    .result-card .finish-btn:hover {
+      background: #f5f4ff;
+    }
+
+    .whatsapp-link {
+      display: block;
+      margin-top: 20px;
+      color: white;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .footer-note {
+      max-width: 760px;
+      margin: 20px auto 0;
+      text-align: center;
+      color: #8b8992;
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 18px 14px 40px;
+      }
+
+      .topbar {
+        margin-bottom: 18px;
+      }
+
+      .brand-text {
+        display: none;
+      }
+
+      .intro-card {
+        padding: 32px 25px;
+        border-radius: 22px;
+      }
+
+      .form-card,
+      .question-card {
+        padding: 23px;
+        border-radius: 20px;
+      }
+
+      .question-text {
+        font-size: 18px;
+      }
+
+      .result-card {
+        padding: 40px 25px;
+        border-radius: 22px;
+      }
+
+      .question-actions {
+        align-items: stretch;
+      }
+
+      .next-btn {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img src="logo.png" alt="Gringo Talk Co.">
+        <span class="brand-text">GRINGO TALK CO.</span>
+      </a>
+
+      <a class="back-link" href="/">← Voltar para o site</a>
+    </header>
+
+    <main class="test-shell">
+
+      <section class="intro-card" id="intro">
+        <div class="intro-kicker">Gringo Talk Co.</div>
+        <h1>Teste de nivelamento</h1>
+        <p>
+          Um teste rápido de nivelamento gramatical para entendermos
+          melhor o seu ponto de partida.
+        </p>
+      </section>
+
+      <section class="form-card" id="identity-card">
+        <label class="field-label" for="student-info">
+          Nome, Idade e Cidade
+        </label>
+
+        <span class="field-help">
+          Conta pra gente um pouquinho sobre você antes de começar.
+        </span>
+
+        <input
+          class="text-input"
+          id="student-info"
+          type="text"
+          placeholder="Ex.: Julia, 30 anos, Guaratinguetá"
+          autocomplete="name"
+        >
+
+        <div class="error-message" id="identity-error">
+          Preencha seu nome, idade e cidade para começar.
+        </div>
+
+        <button class="start-btn" type="button" onclick="startTest()">
+          Começar o teste →
+        </button>
+      </section>
+
+      <section class="question-card" id="question-card">
+        <div class="progress-area">
+          <div class="progress-top">
+            <span class="progress-label" id="progress-label">Pergunta 1 de 10</span>
+            <span class="progress-percent" id="progress-percent">10%</span>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="question-number" id="question-number">
+          Pergunta 1
+        </div>
+
+        <p class="question-text" id="question-text"></p>
+
+        <div class="options" id="options"></div>
+
+        <div class="error-message" id="question-error">
+          Escolha uma alternativa para continuar.
+        </div>
+
+        <div class="question-actions">
+          <button class="back-btn" type="button" onclick="previousQuestion()">
+            ← Voltar
+          </button>
+
+          <button class="next-btn" type="button" onclick="nextQuestion()">
+            Próxima →
+          </button>
+        </div>
+      </section>
+
+      <section class="result-card" id="result-card">
+        <div class="result-star">✦</div>
+
+        <h2>Você chegou até aqui!</h2>
+
+        <p>
+          Obrigada por fazer o teste de nivelamento da Gringo Talk.
+          Suas respostas vão nos ajudar a entender melhor o seu
+          ponto de partida e pensar em uma experiência que faça
+          sentido para você.
+        </p>
+
+        <button class="finish-btn" type="button" onclick="finishTest()">
+          Finalizar teste
+        </button>
+
+        <a
+          class="whatsapp-link"
+          href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Fiz%20o%20teste%20de%20nivelamento%20da%20Gringo%20Talk%20e%20queria%20conversar."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Quero conversar com a Ju →
+        </a>
+      </section>
+
+    </main>
+
+    <div class="footer-note">
+      Gringo Talk Co. · English that feels like you.
+    </div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        text: 'Choose the best answer to complete the sentence: " I ___ brazilian."',
+        options: ["Is", "Are", "Am"]
+      },
+      {
+        text: 'Choose the best answer to complete the sentence: " She ___ my best friend".',
+        options: ["Are", "Is", "Am"]
+      },
+      {
+        text: 'Choose the best answer to complete the sentence: " He ___ his job to tell them he doesn\'t feel good."',
+        options: ["Call", "Calls", "Calling"]
+      },
+      {
+        text: 'Choose the best answer to complete the sentence: " They ___ travel abroad next month".',
+        options: ["is", "are", "will"]
+      },
+      {
+        text: 'Choose the best answer to complete the sentence: " She ___ calling me right now."',
+        options: ["are", "does", "is"]
+      },
+      {
+        text: 'According to the text, "\'I\'ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.\'", What is the main message?',
+        options: [
+          "That people forget what you said",
+          "That people forget what you did",
+          "That people will never forget what you made them feel"
+        ]
+      },
+      {
+        text: 'Choose the correct answer for the verb in the past at the following sentence: " Ramona (leave) the cabin by driving a boat"',
+        options: ["Leaved", "Left", "Lefted"]
+      },
+      {
+        text: 'Choose the correct answer for the next following sentence: " I ____ never been to Canada."',
+        options: ["am", "has", "have"]
+      },
+      {
+        text: '"____ you like coffee?"',
+        options: ["Does", "Are", "Do"]
+      },
+      {
+        text: '"____ you see the new movie?"',
+        options: ["Do", "Did", "Are"]
+      }
+    ];
+
+    let currentQuestion = 0;
+    let answers = Array(questions.length).fill(null);
+    let studentInfo = "";
+
+    function startTest() {
+      const input = document.getElementById("student-info");
+      const error = document.getElementById("identity-error");
+
+      if (!input.value.trim()) {
+        error.classList.add("show");
+        input.focus();
+        return;
+      }
+
+      error.classList.remove("show");
+      studentInfo = input.value.trim();
+
+      document.getElementById("intro").style.display = "none";
+      document.getElementById("identity-card").style.display = "none";
+      document.getElementById("question-card").classList.add("active");
+
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+      const question = questions[currentQuestion];
+
+      document.getElementById("progress-label").textContent =
+        `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+
+      const percent = Math.round(
+        ((currentQuestion + 1) / questions.length) * 100
+      );
+
+      document.getElementById("progress-percent").textContent = `${percent}%`;
+      document.getElementById("progress-bar").style.width = `${percent}%`;
+
+      document.getElementById("question-number").textContent =
+        `Pergunta ${currentQuestion + 1}`;
+
+      document.getElementById("question-text").textContent = question.text;
+
+      const optionsContainer = document.getElementById("options");
+      optionsContainer.innerHTML = "";
+
+      question.options.forEach((option, index) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "option";
+
+        const inputId = `option-${currentQuestion}-${index}`;
+
+        wrapper.innerHTML = `
+          <input
+            type="radio"
+            id="${inputId}"
+            name="question-${currentQuestion}"
+            value="${escapeHtml(option)}"
+            ${answers[currentQuestion] === option ? "checked" : ""}
+          >
+          <label for="${inputId}">
+            <span class="option-circle"></span>
+            <span class="option-text">${escapeHtml(option)}</span>
+          </label>
+        `;
+
+        optionsContainer.appendChild(wrapper);
+      });
+
+      document.getElementById("question-error").classList.remove("show");
+
+      const nextButton = document.querySelector(".next-btn");
+      nextButton.textContent =
+        currentQuestion === questions.length - 1
+          ? "Concluir →"
+          : "Próxima →";
+    }
+
+    function getSelectedAnswer() {
+      const selected = document.querySelector(
+        `input[name="question-${currentQuestion}"]:checked`
+      );
+
+      return selected ? selected.value : null;
+    }
+
+    function nextQuestion() {
+      const selected = getSelectedAnswer();
+      const error = document.getElementById("question-error");
+
+      if (!selected) {
+        error.classList.add("show");
+        return;
+      }
+
+      answers[currentQuestion] = selected;
+      error.classList.remove("show");
+
+      if (currentQuestion === questions.length - 1) {
+        showResult();
+        return;
+      }
+
+      currentQuestion++;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function previousQuestion() {
+      if (currentQuestion === 0) {
+        document.getElementById("question-card").classList.remove("active");
+        document.getElementById("intro").style.display = "block";
+        document.getElementById("identity-card").style.display = "block";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const selected = getSelectedAnswer();
+
+      if (selected) {
+        answers[currentQuestion] = selected;
+      }
+
+      currentQuestion--;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showResult() {
+      document.getElementById("question-card").classList.remove("active");
+      document.getElementById("result-card").classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      console.log("Dados do teste:", {
+        studentInfo,
+        answers
+      });
+    }
+
+    async function finishTest() {
+      const button = document.querySelector(".finish-btn");
+
+      button.disabled = true;
+      button.textContent = "Enviando...";
+
+      const payload = {
+        studentInfo: studentInfo,
+        answers: answers
+      };
+
+      try {
+        await fetch("https://script.google.com/macros/s/AKfycbwlWMWm0lYJRxmXIheWknPgwBp3yXC_8Dg-3MaZ-0bJVlpXVr7pC6JR3RF-Ha3LWyo/exec", {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        button.textContent = "Teste enviado ✓";
+
+        const resultText = document.querySelector(".result-card p");
+        resultText.textContent =
+          "Prontinho! Suas respostas foram enviadas para a Gringo Talk. Agora já temos seu ponto de partida para pensar em uma experiência que faça sentido para você.";
+
+      } catch (error) {
+        console.error("Erro ao enviar teste:", error);
+
+        button.disabled = false;
+        button.textContent = "Tentar novamente";
+
+        alert("Não conseguimos enviar o teste agora. Tente novamente em alguns instantes.");
+      }
+    }
+
+    function escapeHtml(value) {
+      return value
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>

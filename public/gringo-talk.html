@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Gringo Talk Co. — aulas de inglês personalizadas a partir dos interesses, objetivos e jeito de aprender de cada aluno.">
+<title>Gringo Talk Co. — English that feels like you.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#063f9f;--blue2:#0755c9;--deep:#08172d;--cream:#f7f5ee;--white:#fff;--sky:#dcecff;--gold:#f2c96d;--pink:#ff4e91;--line:#d9e1ee;--muted:#647188;--shadow:0 24px 70px rgba(8,45,105,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:#0b1930;font-family:'DM Sans',sans-serif;overflow-x:hidden}a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 28px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(6,63,159,.95);backdrop-filter:blur(14px);color:#fff}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.08em;font-size:14px;display:flex;align-items:center;gap:10px}.brand img{width:38px;height:38px;object-fit:contain;border-radius:9px}.links{display:flex;gap:25px;font-size:14px}.links a{opacity:.86}.links a:hover{opacity:1}.nav-cta{padding:11px 18px;border:1px solid rgba(255,255,255,.35);border-radius:999px;font-size:14px;font-weight:700}.menu{display:none;background:none;border:0;color:#fff;font-size:24px}
+.hero{padding-top:76px;min-height:820px;background:radial-gradient(circle at 75% 18%,rgba(255,255,255,.15),transparent 28%),linear-gradient(135deg,#053887,#064cb5 60%,#053b92);color:#fff;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;left:-10%;right:-10%;bottom:-190px;height:310px;background:var(--cream);border-radius:50% 50% 0 0/45% 45% 0 0}.hero-grid{min-height:744px;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:60px;position:relative;z-index:1}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.18em;font-weight:800;color:#dceaff}.eyebrow span{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:8px}.hero h1{font-family:'Playfair Display',serif;font-size:clamp(55px,7vw,88px);line-height:.94;letter-spacing:-.045em;margin:22px 0}.hero h1 em{font-style:normal;color:#cfe1ff}.hero-copy{max-width:590px;font-size:19px;line-height:1.65;color:#e6efff}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{border:0;border-radius:999px;padding:14px 21px;font-weight:800;display:inline-flex;align-items:center;gap:9px;cursor:pointer}.primary{background:#fff;color:var(--blue)}.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.38)}
+.hero-brand{position:relative;display:grid;place-items:center;min-height:520px}.brand-card{width:min(440px,82vw);background:#fff;border-radius:36px;padding:30px;box-shadow:0 35px 90px rgba(0,0,0,.28);transform:rotate(3deg);transition:.45s}.brand-card:hover{transform:rotate(0) translateY(-8px)}.brand-card img{width:100%;display:block;border-radius:18px}.ring{width:480px;height:480px;border:1px solid rgba(255,255,255,.2);border-radius:50%;position:absolute}.float{position:absolute;background:#fff;color:#10203a;border-radius:18px;padding:13px 16px;box-shadow:var(--shadow);font-size:13px;line-height:1.35}.float strong{display:block;font-size:15px}.float.one{right:-3px;top:68px}.float.two{left:-12px;bottom:55px}.float.three{right:18px;bottom:14px;background:rgba(255,255,255,.96);color:#123c73;border:1px solid rgba(6,63,159,.08);font-size:12px;padding:10px 14px;box-shadow:0 12px 30px rgba(8,45,105,.12)}.float.three strong{font-size:13px}.float.three:before{content:'🪶';margin-right:5px}.float.three strong{display:inline}
+section{padding:105px 0}.section-head{max-width:800px;margin-bottom:48px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--blue);font-weight:800;margin-bottom:12px}.section-head h2{font-family:'Playfair Display',serif;font-size:clamp(42px,5vw,65px);line-height:1.02;letter-spacing:-.04em;margin:0}.section-head p{font-size:18px;line-height:1.7;color:var(--muted);margin:18px 0 0}
+.universe{background:#fff}.universe-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:70px;align-items:center}.universe-copy h3{font-family:'Playfair Display',serif;font-size:45px;line-height:1.04;margin:0 0 18px}.universe-copy p{font-size:17px;line-height:1.75;color:var(--muted)}.quote{border-left:3px solid var(--gold);padding-left:18px;font-weight:800;font-size:20px!important;color:#152641!important}.interest-wall{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.interest{min-height:145px;border-radius:24px;padding:22px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;position:relative;overflow:hidden}.interest:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,rgba(6,63,159,.95),rgba(9,30,67,.82));z-index:0}.interest:nth-child(2):before{background:linear-gradient(145deg,#7b1fa2,#321060)}.interest:nth-child(3):before{background:linear-gradient(145deg,#e83e8c,#6d1b68)}.interest:nth-child(4):before{background:linear-gradient(145deg,#0c78b8,#053a80)}.interest:nth-child(5):before{background:linear-gradient(145deg,#d58b18,#7b3d0c)}.interest:nth-child(6):before{background:linear-gradient(145deg,#1b8c77,#07554c)}.interest>*{position:relative;z-index:1}.interest .emoji{font-size:30px;margin-bottom:auto}.interest b{font-size:17px}.interest span{font-size:12px;opacity:.82;margin-top:4px}
+.method{background:var(--cream)}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:27px;min-height:245px;transition:.3s}.card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}.icon{font-size:28px;margin-bottom:24px}.card h3{font-size:20px;margin:0 0 10px}.card p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}
+.access{margin-top:18px;padding:17px 20px;border-radius:20px;background:#eaf2ff;border:1px solid #cbdcf7;color:#294568;font-size:14px;line-height:1.6}.access strong{color:var(--blue)}
+.lab{background:var(--deep);color:#fff}.lab .kicker{color:var(--gold)}.lab-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:60px;align-items:center}.lab h2{font-family:'Playfair Display',serif;font-size:clamp(44px,5vw,66px);line-height:1.02;margin:0}.lab-copy{color:#c9d4e5;font-size:17px;line-height:1.7}.lab-note{display:inline-flex;gap:8px;align-items:center;margin-top:18px;color:#dbe7f8;font-size:13px}.lab-note b{color:var(--gold)}
+.game-shell{background:#fff;border:1px solid #dce4ef;border-radius:30px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.25);color:#10203a}.game-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:17px}.game-head strong{font-size:17px}.game-head span{font-size:12px;color:#6b7890}.board{position:relative;border-radius:20px;overflow:hidden;background:#42126d;line-height:0}.board img{width:100%;height:auto;display:block}.hotspots{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(3,1fr);gap:1.2%;padding:1.2%}.hotspot{background:transparent;border:2px solid transparent;border-radius:14px;cursor:pointer;transition:.18s}.hotspot:hover{border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.09);transform:scale(.98)}.hotspot.selected{border-color:var(--gold);background:rgba(242,201,109,.18);box-shadow:inset 0 0 0 2px rgba(242,201,109,.3)}.selected-box{margin-top:15px;padding:15px;border-radius:17px;background:#f5f7fb}.selected-box small{display:block;color:#77839a;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800;margin-bottom:8px}.chips{display:flex;flex-wrap:wrap;gap:7px;min-height:28px}.chip{padding:7px 10px;border-radius:999px;background:#dcecff;color:var(--blue);font-size:12px;font-weight:800}.game-action{display:flex;gap:9px;margin-top:13px;align-items:center}.game-action button{border:0;border-radius:999px;padding:11px 15px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.game-message{font-size:12px;color:#69768b}
+.testimonials{background:#fff}.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.testimonial{background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:28px}.stars{letter-spacing:.08em;color:#e1a900;margin-bottom:18px}.testimonial p{font-family:'Playfair Display',serif;font-size:21px;line-height:1.45;margin:0 0 22px}.person{display:flex;align-items:center;gap:12px}.avatar{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800}.person small{display:block;color:#77839a;margin-top:3px}
+.plans{background:#f0eee7}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.plan{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;position:relative}.plan.featured{border:2px solid var(--blue);transform:translateY(-10px);box-shadow:var(--shadow)}.tag{position:absolute;right:18px;top:18px;background:var(--blue);color:#fff;border-radius:999px;padding:7px 10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}.plan h3{font-family:'Playfair Display',serif;font-size:31px;margin:0}.price{font-size:38px;font-weight:800;margin:18px 0 5px}.price small{font-size:13px;color:#718096;font-weight:500}.plan p{color:#68768a;font-size:14px;min-height:43px}.features{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:12px;font-size:14px}.features li:before{content:'✓';color:var(--blue);font-weight:900;margin-right:9px}.plan .btn{width:100%;justify-content:center;background:var(--blue);color:#fff}.note{text-align:center;color:#6d7889;font-size:13px;margin-top:20px}
+.how{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}.steps{display:grid}.step{display:grid;grid-template-columns:54px 1fr;gap:17px;padding:18px;border-bottom:1px solid var(--line)}.num{width:44px;height:44px;border-radius:50%;background:var(--sky);color:var(--blue);display:grid;place-items:center;font-weight:800}.step h3{margin:0;font-size:19px}.step p{margin:6px 0 0;color:var(--muted);line-height:1.6;font-size:14px}
+.ju-photo{width:78%;height:78%;object-fit:cover;object-position:center 30%;border-radius:28px;display:block;box-shadow:0 22px 50px rgba(16,32,58,.16)}.portrait-badge{position:absolute;left:12%;bottom:6%;background:#fff;color:#123c73;padding:13px 18px;border-radius:14px;box-shadow:0 10px 25px rgba(16,32,58,.14);font-weight:900;letter-spacing:.06em;font-size:12px}.portrait-badge small{font-weight:600;letter-spacing:0;text-transform:none;color:#66748a}.about{background:#fff}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}.portrait{width:min(290px,100%);min-height:390px;justify-self:center;border-radius:35px;background:linear-gradient(145deg,#dbeaff,#fff);position:relative;overflow:hidden;display:grid;place-items:center}.portrait-frame{width:82%;height:86%;border:2px dashed #7fa3d6;border-radius:28px;display:grid;place-items:center;color:#567398;text-align:center;padding:30px}.portrait-frame strong{display:block;font-family:'Playfair Display',serif;font-size:34px;color:#274b78}.portrait-frame span{display:block;margin-top:8px;font-size:13px;line-height:1.5}.about-copy h2{font-family:'Playfair Display',serif;font-size:clamp(42px,5vw,60px);line-height:1.03;margin:0}.about-copy p{font-size:17px;line-height:1.8;color:#5d6b80}.about-copy .quote{font-family:'Playfair Display',serif;font-size:29px;line-height:1.2;margin:25px 0;color:#10203a!important;border:0;padding:0}
+.faq{max-width:850px}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;padding:23px 0;background:none;border:0;display:flex;justify-content:space-between;font:600 17px 'DM Sans';text-align:left;cursor:pointer;color:#0b1930}.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}.faq-a p{color:var(--muted);line-height:1.7;margin:0 0 22px}.faq-item.open .faq-a{max-height:180px}.faq-item.open .faq-q span{transform:rotate(45deg)}.faq-q span{transition:.2s;font-size:23px}
+footer{background:var(--deep);color:#fff;padding:70px 0 35px}.footer-top{display:flex;justify-content:space-between;gap:30px}.footer-brand{font-family:'Playfair Display',serif;font-size:31px}.footer-sub{color:#9eabc0;margin-top:6px}.footer-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:14px}.footer-links a{color:#d7e0ee}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:45px;padding-top:20px;display:flex;justify-content:space-between;color:#8491a6;font-size:12px}
+@media(max-width:900px){.links,.nav-cta{display:none}.menu{display:block}.hero-grid,.universe-grid,.lab-grid,.how,.about-grid{grid-template-columns:1fr}.hero{min-height:auto}.hero-grid{padding-top:75px;padding-bottom:130px}.hero-brand{min-height:430px}.float.one{right:0}.float.two{left:0}.cards{grid-template-columns:repeat(2,1fr)}.testimonial-grid,.plan-grid{grid-template-columns:1fr}.plan.featured{transform:none}.interest-wall{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr}.story-card{min-height:330px}.footer-top,.footer-bottom{flex-direction:column}.about-grid{gap:35px}}
+@media(max-width:560px){.wrap{padding:0 18px}section{padding:75px 0}.hero h1{font-size:52px}.hero-copy{font-size:17px}.cards{grid-template-columns:1fr}.interest-wall{grid-template-columns:1fr 1fr}.interest{min-height:130px}.game-shell{padding:12px}.game-head{align-items:start;flex-direction:column}.hotspot{border-radius:8px}.portrait{min-height:390px}.footer-links{gap:14px}}
+
+.heron-note{margin:26px 0 28px;padding:18px 20px;border:1px solid #d9e1ee;border-radius:20px;background:#f8faff;display:flex;gap:14px;align-items:flex-start}.heron-note-icon{width:42px;height:42px;flex:0 0 42px;border-radius:13px;background:#eaf2ff;display:grid;place-items:center;font-size:21px}.heron-note strong{display:block;font-size:15px;color:#173f67}.heron-note p{margin:5px 0 0;font-size:13px;line-height:1.6;color:#647188}
+
+/* ===== ABOUT / JU - NOVA DIREÇÃO VISUAL ===== */
+
+.about{
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.about:before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  left:-220px;
+  top:-120px;
+  background:#eaf2ff;
+  border-radius:48% 52% 55% 45%;
+  transform:rotate(25deg);
+}
+
+.about:after{
+  content:"";
+  position:absolute;
+  width:280px;
+  height:420px;
+  right:-170px;
+  bottom:-170px;
+  background:#eaf2ff;
+  border-radius:55% 45% 48% 52%;
+  transform:rotate(-20deg);
+}
+
+.about-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:.78fr 1.22fr;
+  gap:70px;
+  align-items:center;
+}
+
+.ju-profile-side{
+  position:relative;
+  min-height:560px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.ju-avatar-wrap{
+  position:relative;
+  width:220px;
+  height:220px;
+  display:grid;
+  place-items:center;
+  margin-top:-35px;
+}
+
+.ju-avatar{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center 30%;
+  border:8px solid #fff;
+  box-shadow:0 18px 45px rgba(16,32,58,.18);
+  position:relative;
+  z-index:2;
+}
+
+.ju-avatar-wrap:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border:2px solid #8db2e8;
+  border-radius:50%;
+  transform:rotate(-8deg);
+}
+
+.ju-avatar-wrap:after{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:var(--gold);
+  right:8px;
+  top:28px;
+  box-shadow:0 0 0 7px rgba(242,201,109,.18);
+}
+
+.ju-hand{
+  align-self:flex-start;
+  margin-left:25px;
+  margin-top:-3px;
+  color:#153f75;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:25px;
+  transform:rotate(-5deg);
+  position:relative;
+}
+
+.ju-hand:before{
+  content:"↗";
+  position:absolute;
+  left:-42px;
+  top:-30px;
+  font-family:'DM Sans',sans-serif;
+  font-size:28px;
+  transform:rotate(-15deg);
+}
+
+.ju-note{
+  width:min(330px,90%);
+  margin-top:38px;
+  padding:27px 28px;
+  background:#fffdf7;
+  border-radius:14px 18px 12px 17px;
+  box-shadow:0 18px 45px rgba(16,32,58,.12);
+  transform:rotate(-4deg);
+  position:relative;
+}
+
+.ju-note:before{
+  content:"";
+  position:absolute;
+  top:-7px;
+  left:50%;
+  width:54px;
+  height:15px;
+  background:rgba(242,201,109,.55);
+  transform:translateX(-50%) rotate(-2deg);
+}
+
+.ju-note p{
+  margin:0;
+  color:#173f67;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:21px;
+  line-height:1.4;
+}
+
+.ju-note:after{
+  content:"♡";
+  position:absolute;
+  right:22px;
+  bottom:13px;
+  color:#e0a927;
+  font-size:27px;
+}
+
+.ju-doodle{
+  position:absolute;
+  color:var(--blue);
+  font-size:30px;
+  font-weight:300;
+}
+
+.ju-doodle.one{display:none;}
+
+.ju-doodle.two{display:none;}
+
+.about-copy{
+  position:relative;
+  z-index:2;
+}
+
+.about-copy h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(45px,5.2vw,68px);
+  line-height:.98;
+  letter-spacing:-.045em;
+  margin:0 0 25px;
+  color:#10203a;
+  max-width:720px;
+}
+
+.about-copy h2:after{
+  content:"";
+  display:block;
+  width:135px;
+  height:8px;
+  margin-top:10px;
+  margin-left:48%;
+  border-bottom:3px solid var(--blue);
+  border-radius:50%;
+  transform:rotate(-2deg);
+}
+
+.about-copy .quote{
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+  line-height:1.45;
+  margin:0 0 25px;
+  color:#234b77!important;
+  border:0;
+  padding:0;
+  max-width:700px;
+}
+
+.about-copy > p:not(.quote){
+  font-size:16px;
+  line-height:1.8;
+  color:#5d6b80;
+  max-width:730px;
+}
+
+.heron-note{
+  margin:30px 0 26px;
+  padding:20px 23px;
+  border:1px solid #d3e2f7;
+  border-radius:25px;
+  background:#edf5ff;
+  display:flex;
+  gap:18px;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.heron-note:after{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  right:-55px;
+  top:-65px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+}
+
+.heron-note-icon{
+  width:76px;
+  height:76px;
+  min-width:76px;
+  border-radius:50%;
+  background-image:url('logo.png');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(6,63,159,.18);
+  position:relative;
+  z-index:1;
+}
+
+.heron-note-icon img{
+  display:none;
+}
+
+.heron-note strong{
+  display:block;
+  font-size:18px;
+  color:#173f67;
+  margin-bottom:5px;
+}
+
+.heron-note p{
+  margin:0;
+  font-size:13px;
+  line-height:1.65;
+  color:#647188;
+  position:relative;
+  z-index:1;
+}
+
+.about .btn{
+  margin-top:2px;
+}
+
+@media(max-width:900px){
+  .about-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .ju-profile-side{
+    min-height:500px;
+    order:2;
+  }
+
+  .about-copy{
+    order:1;
+  }
+
+  .ju-avatar-wrap{
+    margin-top:0;
+  }
+
+  .ju-doodle.one,
+  .ju-doodle.two{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+  .about{
+    overflow:hidden;
+  }
+
+  .ju-profile-side{
+    min-height:470px;
+  }
+
+  .ju-avatar-wrap{
+    width:190px;
+    height:190px;
+  }
+
+  .ju-avatar{
+    width:165px;
+    height:165px;
+  }
+
+  .ju-hand{
+    font-size:21px;
+    margin-left:15px;
+  }
+
+  .ju-note{
+    width:90%;
+    margin-top:30px;
+  }
+
+  .ju-note p{
+    font-size:18px;
+  }
+
+  .about-copy h2{
+    font-size:44px;
+  }
+
+  .about-copy h2:after{
+    margin-left:35%;
+  }
+
+  .heron-note{
+    align-items:flex-start;
+  }
+}
+
+
+/* ===== TESTE DE NIVELAMENTO ===== */
+
+.level-test{
+  background:var(--blue);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.level-test:before{
+  content:"";
+  position:absolute;
+  width:430px;
+  height:430px;
+  right:-170px;
+  top:-210px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);
+}
+
+.level-test:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  left:-150px;
+  bottom:-170px;
+  border-radius:50%;
+  background:rgba(255,255,255,.05);
+}
+
+.level-test-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:70px;
+  align-items:center;
+}
+
+.level-test .kicker{
+  color:#dceaff;
+}
+
+.level-test h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,5vw,68px);
+  line-height:1;
+  letter-spacing:-.045em;
+  margin:0 0 22px;
+  max-width:720px;
+}
+
+.level-test-copy{
+  color:#dceaff;
+  font-size:18px;
+  line-height:1.7;
+  max-width:650px;
+  margin:0;
+}
+
+.level-test-card{
+  background:#fff;
+  color:#10203a;
+  border-radius:30px;
+  padding:34px;
+  box-shadow:0 30px 70px rgba(0,0,0,.22);
+  transform:rotate(2deg);
+  transition:.3s;
+}
+
+.level-test-card:hover{
+  transform:rotate(0) translateY(-5px);
+}
+
+.level-test-card-top{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-bottom:22px;
+}
+
+.level-test-icon{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:#eaf2ff;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+}
+
+.level-test-card strong{
+  display:block;
+  font-size:19px;
+}
+
+.level-test-card small{
+  display:block;
+  margin-top:4px;
+  color:#718096;
+  font-size:12px;
+}
+
+.level-test-card p{
+  color:#647188;
+  line-height:1.65;
+  font-size:14px;
+  margin:0 0 22px;
+}
+
+.level-test-btn{
+  width:100%;
+  justify-content:center;
+  background:var(--blue);
+  color:#fff;
+}
+
+.level-test-note{
+  margin-top:15px;
+  color:#718096;
+  font-size:11px;
+  text-align:center;
+}
+
+@media(max-width:900px){
+  .level-test-grid{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .level-test-card{
+    transform:none;
+  }
+}
+
+
+.contact-cta{padding:90px 0;background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.contact-cta:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-120px;top:-170px}
+.contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:45px;position:relative}
+.contact-cta .kicker{color:#bcd5ff}
+.contact-cta h2{margin:10px 0 12px;color:#fff}
+.contact-cta p{margin:0;max-width:620px;color:rgba(255,255,255,.78);font-size:17px;line-height:1.7}
+.contact-btn{background:#fff;color:var(--blue);white-space:nowrap;font-weight:800}
+.contact-btn:hover{transform:translateY(-2px)}
+.footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){
+  .contact-cta-inner{flex-direction:column;align-items:flex-start}
+  .contact-btn{white-space:normal}
+}
+
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap nav-inner"><a class="brand" href="#top"><img src="logo.png" alt="Gringo Talk"><span>GRINGO TALK CO.</span></a><div class="links">
+<a href="#metodo">Metodologia</a>
+<a href="#lab">Gringo Lab</a>
+<a href="#jogos">Jogos & materiais</a>
+<a href="/nivelamento.html">Teste de nivelamento</a>
+<a href="#sobre">Sobre a Ju</a>
+</div><button class="menu">☰</button></div></nav>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid"><div>
+<span class="eyebrow"><span></span> Inglês personalizado</span>
+<h1>English that <em>feels like you.</em></h1>
+<p class="hero-copy">Nós entramos no seu universo para ensinar inglês com aquilo que você gosta de consumir: séries, artistas, livros, jogos, músicas e muito mais.</p>
+<div class="actions"><a class="btn primary" href="#metodo">Quero conhecer a Gringo Talk →</a><a class="btn secondary" href="#lab">Experimente um jogo</a></div>
+</div><div class="hero-brand"><div class="ring"></div><div class="brand-card"><img src="logo.png" alt="Logo Gringo Talk Co."></div>
+<div class="float one"><strong>🎬 Seu universo.</strong>Séries, músicas, jogos, livros...</div>
+<div class="float two"><strong>🧩 Seu jeito.</strong>Conteúdo adaptado ao aluno.</div>
+
+</div></div></section>
+<section class="universe"><div class="wrap universe-grid"><div class="universe-copy">
+<div class="kicker">Entrar no seu universo</div>
+<h3>Já pensou em aprender inglês com aquilo que você realmente gosta?</h3>
+<p>A primeira conversa já começa assim: <b>o que você gosta?</b> A partir daí, nós encontramos temas que façam sentido para você e combinamos esses interesses com a parte gramatical e os objetivos da aula.</p>
+<p class="quote">O conteúdo não precisa ser descontraído só por ser fácil. Ele pode ser descontraído porque faz sentido para você.</p>
+</div><div class="interest-wall">
+<div class="interest"><span class="emoji">🎵</span><b>Música</b><span>Taylor Swift · Olivia Rodrigo · K-pop</span></div>
+<div class="interest"><span class="emoji">🎮</span><b>Seus jogos favoritos</b><span>vocabulário · speaking · desafios</span></div>
+<div class="interest"><span class="emoji">🎬</span><b>Filmes & séries</b><span>Stranger Things · séries hypadas · expressões</span></div>
+<div class="interest"><span class="emoji">📚</span><b>Livros & histórias</b><span>reading · vocabulário · conversação</span></div>
+</div></div></section>
+<section id="metodo" class="method"><div class="wrap"><div class="section-head"><div class="kicker">Uma metodologia diferente</div><h2>Você não precisa caber no método. O método entra no seu universo.</h2><p>Nós combinamos os seus interesses com a estrutura necessária para desenvolver inglês de verdade — sem transformar cada aula em uma lista genérica de exercícios.</p></div><div class="cards"><article class="card"><div class="icon">🎯</div><h3>Primeiro, conhecer você</h3><p>Nós queremos entender seus interesses, objetivos, rotina, nível e o que você espera das aulas desde o início.</p></article><article class="card"><div class="icon">🎬</div><h3>Conteúdo que aproxima</h3><p>Nós transformamos o que faz parte da sua vida em material: séries, músicas, games, livros e muito mais.</p></article><article class="card"><div class="icon">🎮</div><h3>Aprender fazendo</h3><p>Nós usamos jogos, desafios e atividades próprias para transformar conteúdo em prática ativa.</p></article><article class="card"><div class="icon">🧩</div><h3>Flexível ao aluno</h3><p>Se uma forma de aprender não funciona para você, nós procuramos outro caminho, usando recursos mais dinâmicos quando necessário.</p></article></div><div class="access"><strong>Aprender de um jeito diferente também é aprender.</strong> A proposta é observar o que ajuda cada aluno a se envolver com o conteúdo e adaptar a experiência sempre que possível.</div></div></section>
+<section id="lab" class="lab"><div class="wrap lab-grid"><div><div class="kicker">Gringo Lab</div><h2>Não conte como é a metodologia. Deixe a pessoa experimentar.</h2><p class="lab-copy">Esse é um dos jogos que nós criamos. Escolha as atividades que fazem parte da sua rotina e monte seu dia em inglês.</p><div class="lab-note"><b>Jogo real da Gringo Talk</b> · 15 cards · escolha até 5</div></div><div class="game-shell"><div class="game-head"><strong>Build your day</strong><span>Choose 5 activities</span></div><div class="board"><img src="daily-routine.png" alt="Jogo de rotina em inglês criado pela Gringo Talk"><div class="hotspots" id="hotspots"></div></div><div class="selected-box"><small>Your routine</small><div class="chips" id="chips"><span style="color:#77839a;font-size:12px">Ainda não escolheu nenhuma atividade.</span></div><div class="game-action"><button id="clear">Clear</button><span class="game-message" id="message">Clique nas cartas para começar.</span></div></div></div></div></section>
+<section id="jogos" class="universe"><div class="wrap"><div class="section-head"><div class="kicker">Jogos & materiais</div><h2>Conteúdo que parece feito para você porque é.</h2><p>Esses são exemplos de atividades e materiais que nós criamos para ensinar inglês usando referências, jogos e situações que aproximam o aluno do conteúdo.</p></div><div class="cards">
+<article class="card"><div class="icon">🎯</div><h3>English Quest</h3><p>Um board game de perguntas que começa mais leve e pode ficar mais desafiador, exigindo respostas mais desenvolvidas.</p></article>
+<article class="card"><div class="icon">🕵️</div><h3>Guess Who?</h3><p>Você usa roupas, cores e características para fazer perguntas e descobrir qual personagem foi escolhido.</p></article>
+<article class="card"><div class="icon">🎡</div><h3>Spin the Frequency Wheel</h3><p>Você gira a roleta, recebe uma ação e cria uma frase usando o advérbio de frequência sorteado.</p></article>
+<article class="card"><div class="icon">📦</div><h3>Prepositions of Time</h3><p>Você organiza situações em IN, ON ou AT e pratica as preposições de tempo a partir de exemplos.</p></article>
+</div><div class="access"><strong>O objetivo não é usar um tema só porque ele é famoso.</strong> É usar aquilo que faz sentido para o aluno como ponte para aprender inglês.</div></div></section>
+<section id="depoimentos" class="testimonials"><div class="wrap"><div class="section-head"><div class="kicker">Experiência de quem aprende</div><h2>Quando a aula conversa com você, o aprendizado muda de lugar.</h2><p>Essa área será preenchida com depoimentos reais dos alunos da Ju, com nome, foto e contexto quando houver autorização.</p></div><div class="testimonial-grid"><article class="testimonial"><div class="stars">★★★★★</div><p>“Depoimento real de aluno.”</p><div class="person"><div class="avatar">+</div><div><b>Em breve</b><small>Aluno(a) Gringo Talk</small></div></div></article><article class="testimonial"><div class="stars">★★★★★</div><p>“Aqui entra uma experiência real sobre aprender usando um tema que gosta.”</p><div class="person"><div class="avatar">+</div><div><b>Em breve</b><small>Aluno(a) Gringo Talk</small></div></div></article><article class="testimonial"><div class="stars">★★★★★</div><p>“Aqui entra uma história real de evolução, conforto ou confiança.”</p><div class="person"><div class="avatar">+</div><div><b>Em breve</b><small>Aluno(a) Gringo Talk</small></div></div></article></div></div></section>
+<section id="planos" class="plans"><div class="wrap"><div class="section-head"><div class="kicker">Planos</div><h2>Escolha seu ritmo.</h2><p>Os valores e formatos oficiais entram aqui assim que a Ju definir os planos finais. A estrutura já está pronta para mostrar preço, frequência, modalidade e o que está incluso.</p></div><div class="plan-grid"><article class="plan"><h3>Plano 01</h3><div class="price">R$ XXX <small>/mês</small></div><p>Detalhes do plano serão definidos com a Ju.</p><ul class="features"><li>Frequência a definir</li><li>Aulas personalizadas</li><li>Material de apoio</li><li>Acompanhamento</li></ul><a class="btn" href="#contato">Quero saber mais</a></article><article class="plan featured"><span class="tag">Destaque</span><h3>Plano 02</h3><div class="price">R$ XXX <small>/mês</small></div><p>Detalhes do plano serão definidos com a Ju.</p><ul class="features"><li>Frequência a definir</li><li>Atividades personalizadas</li><li>Jogos e desafios</li><li>Acompanhamento</li></ul><a class="btn" href="#contato">Quero saber mais</a></article><article class="plan"><h3>Plano 03</h3><div class="price">R$ XXX <small>/mês</small></div><p>Detalhes do plano serão definidos com a Ju.</p><ul class="features"><li>Frequência a definir</li><li>Plano personalizado</li><li>Atividades extras</li><li>Acompanhamento individual</li></ul><a class="btn" href="#contato">Quero saber mais</a></article></div><div class="note">Valores, modalidade, duração, reposição e demais condições serão atualizados com as informações oficiais da Ju.</div></div></section>
+<section><div class="wrap how"><div class="section-head"><div class="kicker">Como funciona</div><h2>Um caminho construído com você.</h2><p>Nosso primeiro contato começa com uma conversa informal. Nós queremos entender seus interesses, seus objetivos e o que você gosta de consumir no dia a dia para construir a experiência a partir daí.</p></div><div class="steps"><div class="step"><div class="num">01</div><div><h3>Conhecer</h3><p>Nós queremos entender seus interesses, objetivos, rotina e o que você gosta de consumir no dia a dia.</p></div></div><div class="step"><div class="num">02</div><div><h3>Criar</h3><p>Nós transformamos esses interesses em conteúdos combinados com gramática e objetivos da aula.</p></div></div><div class="step"><div class="num">03</div><div><h3>Praticar</h3><p>Nós colocamos o inglês em prática com exercícios, conversação, jogos e atividades contextualizadas.</p></div></div><div class="step"><div class="num">04</div><div><h3>Adaptar</h3><p>Nós observamos como você está aprendendo e ajustamos a abordagem quando necessário.</p></div></div></div></div></section>
+
+<section id="nivelamento" class="level-test">
+  <div class="wrap level-test-grid">
+
+    <div>
+      <div class="kicker">Teste de nivelamento</div>
+
+      <h2>Antes de começar, vamos descobrir de onde você parte.</h2>
+
+      <p class="level-test-copy">
+        Queremos entender seu nível atual para que sua experiência na Gringo Talk
+        faça sentido desde o começo. Faça nosso teste de nivelamento e descubra
+        seu ponto de partida.
+      </p>
+    </div>
+
+    <div class="level-test-card">
+
+      <div class="level-test-card-top">
+        <div class="level-test-icon">✦</div>
+        <div>
+          <strong>Seu ponto de partida</strong>
+          <small>Teste de nivelamento Gringo Talk</small>
+        </div>
+      </div>
+
+      <p>
+        Separe alguns minutos para responder às perguntas e nos ajudar a
+        entender melhor seu nível de inglês.
+      </p>
+
+      <a
+        class="btn level-test-btn"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSeqtkvgn4lDmimTII9juK6342rBI-mUTvkv4jxayLtUh-JvwA/viewform"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Fazer teste de nivelamento →
+      </a>
+
+      <div class="level-test-note">
+        O teste será aberto em uma nova aba.
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="sobre" class="about">
+<div class="wrap about-grid">
+
+  <div class="ju-profile-side">
+
+    <div class="ju-doodle one">〰</div>
+    <div class="ju-doodle two">♡</div>
+
+    <div class="ju-avatar-wrap">
+      <img
+        class="ju-avatar"
+        src="ju-profile.jpg"
+        alt="Ju, professora da Gringo Talk"
+      >
+    </div>
+
+    <div class="ju-hand">Oi, eu sou a Ju!</div>
+
+    <div class="ju-note">
+      <p>“Eu gosto de conhecer o aluno, entender o que ele gosta e transformar isso em conteúdo.”</p>
+    </div>
+
+  </div>
+
+  <div class="about-copy">
+
+    <div class="kicker">Quem está por trás das aulas</div>
+
+    <h2>Antes de ser sua professora, eu quero conhecer você.</h2>
+
+    <p>Oieee! Eu sou a Julia, tenho 30 anos e dou aula de inglês desde os meus 19. Estudei inglês por seis anos em duas escolas de idiomas e, ao final da segunda, recebi o convite para começar a dar aulas.</p>
+
+    <p>Sou formada em Gestão Empresarial e pós-graduada em Tradução e Interpretação. A Gringo Talk nasceu da minha vontade de unir a paixão por idiomas com uma forma de ensinar que faça o aluno se sentir mais próximo do conteúdo.</p>
+
+    <div class="heron-note">
+      <div class="heron-note-icon">
+        <img src="logo.png" alt="Logo Gringo Talk Co.">
+      </div>
+
+      <div>
+        <strong>Por que a garça?</strong>
+        <p>A garça acompanha a Gringo Talk desde os materiais didáticos. Ela representa a cidade onde eu nasci e também virou uma forma lúdica de deixar a jornada de aprendizado mais leve.</p>
+      </div>
+    </div>
+
+    <a class="btn" style="background:var(--blue);color:#fff" href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Conheci%20a%20Gringo%20Talk%20pelo%20site%20e%20queria%20conversar%20sobre%20as%20aulas." target="_blank" rel="noopener">Quero conversar</a>
+
+  </div>
+
+</div>
+</section>
+<section><div class="wrap faq"><div class="section-head"><div class="kicker">FAQ</div><h2>Perguntas que todo mundo faz.</h2></div><div class="faq-item"><button class="faq-q">Como vocês escolhem os temas das aulas?<span>+</span></button><div class="faq-a"><p>A conversa começa pelos seus interesses. A partir deles, nós encontramos temas que façam sentido e combinamos esses interesses com a parte gramatical e os objetivos da aula.</p></div></div><div class="faq-item"><button class="faq-q">As aulas são iguais para todo mundo?<span>+</span></button><div class="faq-a"><p>Não. Nós personalizamos os conteúdos a partir dos seus interesses, objetivos e jeito de aprender.</p></div></div><div class="faq-item"><button class="faq-q">Vocês trabalham com jogos?<span>+</span></button><div class="faq-a"><p>Sim. Nós criamos jogos e atividades próprias para ajudar na fixação da matéria e tornar a prática mais leve e ativa.</p></div></div><div class="faq-item"><button class="faq-q">E se eu tiver dificuldade de atenção ou concentração?<span>+</span></button><div class="faq-a"><p>Nós observamos como você está se envolvendo com o conteúdo e adaptamos o formato quando necessário, usando recursos mais dinâmicos e atividades lúdicas.</p></div></div><div class="faq-item"><button class="faq-q">Preciso já saber inglês para começar?<span>+</span></button><div class="faq-a"><p>O ponto de partida é definido de acordo com o seu nível atual e seus objetivos. Você pode fazer nosso teste de nivelamento para nos ajudar a entender seu ponto de partida antes de começar.</p></div></div></div></section>
+</main>
+
+<section class="contact-cta">
+  <div class="wrap contact-cta-inner">
+    <div>
+      <div class="kicker">Vamos conversar?</div>
+      <h2>Seu inglês pode começar pelo que você já gosta.</h2>
+      <p>Conta pra Ju o que você procura e conheça a proposta da Gringo Talk.</p>
+    </div>
+    <a class="btn contact-btn" href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Conheci%20a%20Gringo%20Talk%20pelo%20site%20e%20queria%20conversar%20sobre%20as%20aulas." target="_blank" rel="noopener">Falar com a Ju pelo WhatsApp →</a>
+  </div>
+</section>
+
+<footer id="contato"><div class="wrap"><div class="footer-top"><div><div class="footer-brand">Gringo Talk Co.</div><div class="footer-sub">English that feels like you.</div></div><div class="footer-links"><a href="#metodo">Metodologia</a><a href="#lab">Gringo Lab</a><a href="#jogos">Jogos & materiais</a><a href="/nivelamento.html">Teste de nivelamento</a><a href="#depoimentos">Alunos</a><a href="#planos">Planos</a><a href="#sobre">Sobre a Ju</a></div></div><div class="footer-bottom"><span>© 2026 Gringo Talk Co.</span><a href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Conheci%20a%20Gringo%20Talk%20pelo%20site%20e%20queria%20conversar%20sobre%20as%20aulas." target="_blank" rel="noopener">Falar com a Ju pelo WhatsApp</a></div></div></footer>
+<script>
+const activities=['Wake up!','Brush your teeth!','Take a shower!','Get dressed!','Eat breakfast!','Go to school!','Do your homework!','Clean your room!','Help at home!','Play sports!','Read a book!','Watch TV / Movies!','Go to bed!','Listen to music!','Go out with friends!'];
+const hotspots=document.getElementById('hotspots'),chips=document.getElementById('chips'),message=document.getElementById('message'),selected=[];
+activities.forEach((name,i)=>{const b=document.createElement('button');b.className='hotspot';b.title=name;b.setAttribute('aria-label',name);b.addEventListener('click',()=>{const idx=selected.indexOf(i);if(idx>-1){selected.splice(idx,1);b.classList.remove('selected')}else if(selected.length<5){selected.push(i);b.classList.add('selected')}render()});hotspots.appendChild(b)});
+function render(){chips.innerHTML='';if(!selected.length){chips.innerHTML='<span style="color:#77839a;font-size:12px">Ainda não escolheu nenhuma atividade.</span>';message.textContent='Clique nas cartas para começar.';return}selected.forEach((i,n)=>{const c=document.createElement('span');c.className='chip';c.textContent=(n+1)+' · '+activities[i];chips.appendChild(c)});message.textContent=selected.length===5?'Ótimo! Agora conte sobre a sua rotina.':'Escolha '+(5-selected.length)+' atividade'+(5-selected.length===1?'':'s')+' a mais.'}
+document.getElementById('clear').addEventListener('click',()=>{selected.splice(0);document.querySelectorAll('.hotspot').forEach(x=>x.classList.remove('selected'));render()});
+document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
+</script>
+<style>.whatsapp-float{position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:9999;box-shadow:0 12px 30px rgba(0,0,0,.18);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.22)}.whatsapp-float svg{width:29px;height:29px;fill:white}@media(max-width:640px){.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}}
+.contact-cta{padding:90px 0;background:var(--blue);color:#fff;position:relative;overflow:hidden}
+.contact-cta:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-120px;top:-170px}
+.contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:45px;position:relative}
+.contact-cta .kicker{color:#bcd5ff}
+.contact-cta h2{margin:10px 0 12px;color:#fff}
+.contact-cta p{margin:0;max-width:620px;color:rgba(255,255,255,.78);font-size:17px;line-height:1.7}
+.contact-btn{background:#fff;color:var(--blue);white-space:nowrap;font-weight:800}
+.contact-btn:hover{transform:translateY(-2px)}
+.footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){
+  .contact-cta-inner{flex-direction:column;align-items:flex-start}
+  .contact-btn{white-space:normal}
+}
+
+</style><a class="whatsapp-float" href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Conheci%20a%20Gringo%20Talk%20pelo%20site%20e%20queria%20conversar%20sobre%20as%20aulas." target="_blank" rel="noopener noreferrer" aria-label="Conversar com a Ju pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.55 0 .24 5.31.24 11.84c0 2.09.55 4.13 1.59 5.92L.14 24l6.39-1.67a11.83 11.83 0 0 0 5.55 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.4-8.42ZM12.09 21.7h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.79.99 1.01-3.69-.23-.38a9.84 9.84 0 0 1-1.51-5.2C2.19 6.4 6.62 1.98 12.08 1.98c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.43 9.89-9.88 9.89Zm5.42-7.4c-.3-.15-1.77-.87-2.05-.97-.28-.1-.49-.15-.7.15-.2.3-.8.97-.98 1.17-.18.2-.36.23-.66.08-.3-.15-1.27-.47-2.42-1.49-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.36.45-.54.15-.18.2-.31.3-.51.1-.2.05-.38-.03-.53-.08-.15-.7-1.69-.96-2.31-.25-.61-.51-.53-.7-.54h-.6c-.2 0-.53.08-.81.38-.28.3-1.06 1.04-1.06 2.54s1.09 2.95 1.24 3.15c.15.2 2.15 3.28 5.2 4.6.73.32 1.3.51 1.75.65.74.24 1.41.21 1.94.13.59-.09 1.77-.72 2.02-1.42.25-.69.25-1.29.18-1.42-.08-.13-.28-.2-.58-.35Z"/></svg></a></body></html>
