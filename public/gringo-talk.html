@@ -270,7 +270,7 @@ footer{background:var(--deep);color:#fff;padding:70px 0 35px}.footer-top{display
   height:76px;
   min-width:76px;
   border-radius:50%;
-  background-image:url('logo.png');
+  background-image:url('favicon.png');
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -283,7 +283,10 @@ footer{background:var(--deep);color:#fff;padding:70px 0 35px}.footer-top{display
 }
 
 .heron-note-icon img{
-  display:none;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .heron-note strong{
@@ -532,7 +535,7 @@ footer{background:var(--deep);color:#fff;padding:70px 0 35px}.footer-top{display
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap nav-inner"><a class="brand" href="#top"><img src="logo.png" alt="Gringo Talk"><span>GRINGO TALK CO.</span></a><div class="links">
+<nav class="nav"><div class="wrap nav-inner"><a class="brand" href="#top"><img src="favicon.png" alt="Gringo Talk"><span>GRINGO TALK CO.</span></a><div class="links">
 <a href="#metodo">Metodologia</a>
 <a href="#lab">Gringo Lab</a>
 <a href="#jogos">Jogos & materiais</a>
@@ -657,7 +660,7 @@ footer{background:var(--deep);color:#fff;padding:70px 0 35px}.footer-top{display
 
     <div class="heron-note">
       <div class="heron-note-icon">
-        <img src="logo.png" alt="Logo Gringo Talk Co.">
+        <img src="favicon.png" alt="Garça da Gringo Talk">
       </div>
 
       <div>
@@ -695,7 +698,7 @@ function render(){chips.innerHTML='';if(!selected.length){chips.innerHTML='<span
 document.getElementById('clear').addEventListener('click',()=>{selected.splice(0);document.querySelectorAll('.hotspot').forEach(x=>x.classList.remove('selected'));render()});
 document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
 </script>
-<style>.whatsapp-float{position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:9999;box-shadow:0 12px 30px rgba(0,0,0,.18);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.22)}.whatsapp-float svg{width:29px;height:29px;fill:white}@media(max-width:640px){.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}}
+<style>.whatsapp-float{position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;background:#0B4DBB;display:flex;align-items:center;justify-content:center;z-index:9999;box-shadow:0 12px 30px rgba(0,0,0,.18);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}.whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.22)}.whatsapp-float svg{width:29px;height:29px;fill:white}@media(max-width:640px){.whatsapp-float{right:16px;bottom:16px;width:54px;height:54px}}
 .contact-cta{padding:90px 0;background:var(--blue);color:#fff;position:relative;overflow:hidden}
 .contact-cta:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-120px;top:-170px}
 .contact-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:45px;position:relative}

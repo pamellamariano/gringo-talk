@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   description:
     "Aulas de inglês personalizadas a partir dos seus interesses, objetivos e jeito de aprender.",
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Gringo Talk Co. | English that feels like you.",
