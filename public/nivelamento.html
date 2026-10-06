@@ -1,840 +1,898 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teste de Nivelamento | Gringo Talk Co.</title>
-  <meta name="description" content="Teste rápido de nivelamento gramatical da Gringo Talk Co.">
-  <link rel="icon" href="logo.png">
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
-
-    :root {
-      --blue: #5146e5;
-      --blue-dark: #3930a8;
-      --blue-light: #eeedff;
-      --cream: #fffdf8;
-      --ink: #171717;
-      --muted: #6e6e78;
-      --line: #e7e5df;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(81, 70, 229, 0.10), transparent 28%),
-        radial-gradient(circle at 90% 80%, rgba(81, 70, 229, 0.08), transparent 25%),
-        var(--cream);
-      color: var(--ink);
-      font-family: "DM Sans", Arial, sans-serif;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    .page {
-      min-height: 100vh;
-      padding: 28px 20px 60px;
-    }
-
-    .topbar {
-      max-width: 880px;
-      margin: 0 auto 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: var(--ink);
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-
-    .brand-text {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      color: var(--blue);
-    }
-
-    .back-link {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .back-link:hover {
-      color: var(--blue);
-    }
-
-    .test-shell {
-      width: min(760px, 100%);
-      margin: 0 auto;
-    }
-
-    .intro-card {
-      background: var(--blue);
-      color: white;
-      border-radius: 28px;
-      padding: 42px 42px 38px;
-      box-shadow: 0 24px 70px rgba(57, 48, 168, 0.20);
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .intro-card::after {
-      content: "";
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.22);
-      right: -70px;
-      bottom: -90px;
-    }
-
-    .intro-kicker {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 700;
-      opacity: .78;
-      margin-bottom: 16px;
-    }
-
-    .intro-card h1 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(38px, 6vw, 62px);
-      line-height: .98;
-      letter-spacing: -.035em;
-      margin: 0 0 18px;
-      max-width: 620px;
-    }
-
-    .intro-card p {
-      margin: 0;
-      max-width: 580px;
-      font-size: 16px;
-      line-height: 1.7;
-      opacity: .9;
-    }
-
-    .form-card {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 12px 40px rgba(20, 20, 40, 0.06);
-    }
-
-    .field-label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .field-help {
-      display: block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-
-    .text-input {
-      width: 100%;
-      border: 0;
-      border-bottom: 2px solid #d9d7d1;
-      padding: 13px 2px;
-      outline: none;
-      color: var(--ink);
-      background: transparent;
-      transition: border-color .2s ease;
-    }
-
-    .text-input:focus {
-      border-color: var(--blue);
-    }
-
-    .start-btn,
-    .next-btn,
-    .finish-btn {
-      border: 0;
-      border-radius: 999px;
-      background: var(--blue);
-      color: white;
-      padding: 14px 24px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
-    }
-
-    .start-btn:hover,
-    .next-btn:hover,
-    .finish-btn:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(81, 70, 229, .20);
-    }
-
-    .start-btn {
-      margin-top: 26px;
-    }
-
-    .question-card {
-      display: none;
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: 0 12px 40px rgba(20, 20, 40, 0.06);
-    }
-
-    .question-card.active {
-      display: block;
-      animation: appear .3s ease;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .progress-area {
-      margin-bottom: 28px;
-    }
-
-    .progress-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 9px;
-    }
-
-    .progress-label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .progress-percent {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .progress-track {
-      width: 100%;
-      height: 7px;
-      background: #ebeaf3;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      width: 10%;
-      height: 100%;
-      background: var(--blue);
-      border-radius: inherit;
-      transition: width .3s ease;
-    }
-
-    .question-number {
-      color: var(--blue);
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .question-text {
-      font-size: 20px;
-      line-height: 1.55;
-      font-weight: 600;
-      margin: 0 0 24px;
-    }
-
-    .options {
-      display: grid;
-      gap: 11px;
-    }
-
-    .option {
-      position: relative;
-    }
-
-    .option input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .option label {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border: 1px solid #dedde5;
-      border-radius: 16px;
-      padding: 16px 17px;
-      cursor: pointer;
-      transition: border-color .2s ease, background .2s ease, transform .2s ease;
-    }
-
-    .option label:hover {
-      border-color: var(--blue);
-      transform: translateY(-1px);
-    }
-
-    .option-circle {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
-      border: 2px solid #aaa9b3;
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .option input:checked + label {
-      border-color: var(--blue);
-      background: var(--blue-light);
-    }
-
-    .option input:checked + label .option-circle {
-      border-color: var(--blue);
-    }
-
-    .option input:checked + label .option-circle::after {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border-radius: 50%;
-      background: var(--blue);
-    }
-
-    .option-text {
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .error-message {
-      display: none;
-      color: #c33a3a;
-      font-size: 13px;
-      font-weight: 600;
-      margin-top: 16px;
-    }
-
-    .error-message.show {
-      display: block;
-    }
-
-    .question-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 30px;
-      gap: 12px;
-    }
-
-    .back-btn {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 700;
-      cursor: pointer;
-      padding: 12px 4px;
-    }
-
-    .back-btn:hover {
-      color: var(--ink);
-    }
-
-    .result-card {
-      display: none;
-      background: var(--blue);
-      color: white;
-      border-radius: 28px;
-      padding: 48px 40px;
-      text-align: center;
-      box-shadow: 0 24px 70px rgba(57, 48, 168, 0.20);
-    }
-
-    .result-card.active {
-      display: block;
-      animation: appear .4s ease;
-    }
-
-    .result-star {
-      font-size: 38px;
-      margin-bottom: 18px;
-    }
-
-    .result-card h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(38px, 6vw, 54px);
-      line-height: 1;
-      margin: 0 0 18px;
-    }
-
-    .result-card p {
-      max-width: 520px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
-      opacity: .9;
-    }
-
-    .result-card .finish-btn {
-      background: white;
-      color: var(--blue);
-    }
-
-    .result-card .finish-btn:hover {
-      background: #f5f4ff;
-    }
-
-    .whatsapp-link {
-      display: block;
-      margin-top: 20px;
-      color: white;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .footer-note {
-      max-width: 760px;
-      margin: 20px auto 0;
-      text-align: center;
-      color: #8b8992;
-      font-size: 12px;
-    }
-
-    @media (max-width: 640px) {
-      .page {
-        padding: 18px 14px 40px;
-      }
-
-      .topbar {
-        margin-bottom: 18px;
-      }
-
-      .brand-text {
-        display: none;
-      }
-
-      .intro-card {
-        padding: 32px 25px;
-        border-radius: 22px;
-      }
-
-      .form-card,
-      .question-card {
-        padding: 23px;
-        border-radius: 20px;
-      }
-
-      .question-text {
-        font-size: 18px;
-      }
-
-      .result-card {
-        padding: 40px 25px;
-        border-radius: 22px;
-      }
-
-      .question-actions {
-        align-items: stretch;
-      }
-
-      .next-btn {
-        flex: 1;
-      }
-    }
-  </style>
-    <link rel="icon" type="image/png" href="/favicon.png">
-  </head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teste de Nivelamento | Gringo Talk Co.</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue:#063f9f;
+  --blue2:#0755c9;
+  --deep:#08172d;
+  --cream:#f7f5ee;
+  --white:#fff;
+  --sky:#eaf2ff;
+  --gold:#f2c96d;
+  --green:#1f9d62;
+  --green-bg:#eaf8f1;
+  --red:#d94a5a;
+  --red-bg:#fff0f2;
+  --line:#d9e1ee;
+  --muted:#647188;
+  --shadow:0 24px 70px rgba(8,45,105,.14);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--cream);
+  color:#0b1930;
+  font-family:'DM Sans',sans-serif;
+}
+
+button,input{font:inherit}
+
+button{cursor:pointer}
+
+a{text-decoration:none;color:inherit}
+
+.top{
+  background:
+    radial-gradient(circle at 78% 15%,rgba(255,255,255,.13),transparent 28%),
+    linear-gradient(135deg,#053887,#064cb5 60%,#053b92);
+  color:#fff;
+  padding:28px 28px 115px;
+  position:relative;
+  overflow:hidden;
+}
+
+.top:after{
+  content:"";
+  position:absolute;
+  left:-10%;
+  right:-10%;
+  bottom:-145px;
+  height:210px;
+  background:var(--cream);
+  border-radius:50% 50% 0 0/50% 50% 0 0;
+}
+
+.top-inner{
+  max-width:1080px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  font-size:14px;
+}
+
+.brand img{
+  width:40px;
+  height:40px;
+  object-fit:contain;
+  border-radius:10px;
+}
+
+.back{
+  position:absolute;
+  right:0;
+  top:4px;
+  font-size:14px;
+  font-weight:700;
+  opacity:.9;
+}
+
+.back:hover{opacity:1}
+
+.hero{
+  max-width:780px;
+  margin:70px auto 0;
+  text-align:center;
+}
+
+.kicker{
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:12px;
+  font-weight:800;
+  opacity:.78;
+}
+
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(46px,7vw,76px);
+  line-height:.98;
+  margin:14px 0 20px;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  font-size:17px;
+  line-height:1.7;
+  color:rgba(255,255,255,.88);
+}
+
+.wrap{
+  max-width:900px;
+  margin:-55px auto 80px;
+  padding:0 20px;
+  position:relative;
+  z-index:2;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:38px;
+  box-shadow:var(--shadow);
+}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.start{text-align:center}
+
+.start h2,
+.result h2{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  margin:0 0 12px;
+}
+
+.start p{
+  max-width:600px;
+  margin:0 auto;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.meta{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:25px 0 30px;
+}
+
+.pill{
+  background:var(--sky);
+  color:#31527d;
+  border-radius:999px;
+  padding:9px 14px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.student-form{
+  max-width:560px;
+  margin:30px auto 0;
+  text-align:left;
+}
+
+.field{
+  margin-bottom:16px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:7px;
+  font-size:13px;
+  font-weight:800;
+  color:#263752;
+}
+
+.field input{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px 15px;
+  outline:none;
+  color:#172033;
+  background:#fff;
+}
+
+.field input:focus{
+  border-color:var(--blue2);
+  box-shadow:0 0 0 4px rgba(7,85,201,.08);
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:14px 22px;
+  font-weight:800;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+}
+
+.primary{
+  background:var(--blue);
+  color:#fff;
+}
+
+.secondary{
+  background:#edf2f8;
+  color:#30415c;
+}
+
+.question-top{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+}
+
+.progress{
+  height:8px;
+  background:#e8edf5;
+  border-radius:999px;
+  overflow:hidden;
+  margin:12px 0 38px;
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--gold);
+  transition:.3s ease;
+}
+
+.question{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+  line-height:1.3;
+  margin:0 0 25px;
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option{
+  width:100%;
+  text-align:left;
+  background:#fff;
+  border:2px solid var(--line);
+  padding:17px 19px;
+  border-radius:16px;
+  color:#172033;
+  font-weight:600;
+  transition:.18s ease;
+}
+
+.option:hover:not(:disabled){
+  border-color:#8eacd8;
+  background:#f8fbff;
+}
+
+.option.correct{
+  border-color:var(--green);
+  background:var(--green-bg);
+  color:#176b45;
+}
+
+.option.wrong{
+  border-color:var(--red);
+  background:var(--red-bg);
+  color:#a52d3d;
+}
+
+.option:disabled{
+  cursor:default;
+}
+
+.feedback{
+  min-height:26px;
+  margin-top:18px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.feedback.success{color:var(--green)}
+.feedback.error{color:var(--red)}
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:28px;
+}
+
+.actions .right{
+  margin-left:auto;
+}
+
+.result{
+  text-align:center;
+}
+
+.result-kicker{
+  color:var(--blue);
+}
+
+.score-circle{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:var(--sky);
+  margin:25px auto 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.score-number{
+  font-size:42px;
+  line-height:1;
+  font-weight:900;
+  color:var(--blue);
+}
+
+.score-percent{
+  margin-top:7px;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:800;
+}
+
+.level-card{
+  max-width:620px;
+  margin:25px auto;
+  background:#f8faff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:26px;
+}
+
+.level-label{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  font-weight:800;
+  color:var(--muted);
+}
+
+.level{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  color:var(--blue);
+  margin:6px 0 2px;
+}
+
+.level-desc{
+  color:#30415c;
+  font-size:15px;
+  line-height:1.65;
+}
+
+.disclaimer{
+  max-width:650px;
+  margin:25px auto;
+  text-align:left;
+  padding:20px;
+  border-radius:18px;
+  background:#fff8e8;
+  border:1px solid #f0dfae;
+  color:#66552d;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.result-actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+footer{
+  text-align:center;
+  padding:0 20px 35px;
+  color:#7a8497;
+  font-size:13px;
+}
+
+@media(max-width:650px){
+  .top{
+    padding:22px 20px 100px;
+  }
+
+  .back{
+    position:static;
+    display:block;
+    margin-top:16px;
+  }
+
+  .hero{
+    margin-top:55px;
+  }
+
+  .hero h1{
+    font-size:50px;
+  }
+
+  .card{
+    padding:24px;
+    border-radius:22px;
+  }
+
+  .question{
+    font-size:25px;
+  }
+
+  .actions{
+    flex-direction:column-reverse;
+  }
+
+  .actions .right{
+    margin-left:0;
+    width:100%;
+  }
+
+  .actions .btn{
+    width:100%;
+  }
+
+  .result-actions .btn{
+    width:100%;
+  }
+}
+</style>
+</head>
 
 <body>
-  <div class="page">
 
-    <header class="topbar">
-      <a class="brand" href="/">
-        <img src="logo.png" alt="Gringo Talk Co.">
-        <span class="brand-text">GRINGO TALK CO.</span>
-      </a>
+<header class="top">
+  <div class="top-inner">
 
-      <a class="back-link" href="/">← Voltar para o site</a>
-    </header>
+    <a class="brand" href="/">
+      <img src="/favicon.png" alt="Gringo Talk">
+      <span>GRINGO TALK CO.</span>
+    </a>
 
-    <main class="test-shell">
+    <a class="back" href="/">← Voltar para o site</a>
 
-      <section class="intro-card" id="intro">
-        <div class="intro-kicker">Gringo Talk Co.</div>
-        <h1>Teste de nivelamento</h1>
-        <p>
-          Um teste rápido de nivelamento gramatical para entendermos
-          melhor o seu ponto de partida.
-        </p>
-      </section>
+    <div class="hero">
+      <div class="kicker">Teste de nivelamento</div>
+      <h1>How's your English?</h1>
+      <p>
+        Um teste rápido para você ter uma primeira ideia de onde está
+        e entender qual caminho pode fazer sentido para o seu inglês.
+      </p>
+    </div>
 
-      <section class="form-card" id="identity-card">
-        <label class="field-label" for="student-info">
-          Nome, Idade e Cidade
-        </label>
+  </div>
+</header>
 
-        <span class="field-help">
-          Conta pra gente um pouquinho sobre você antes de começar.
-        </span>
+<main class="wrap">
 
-        <input
-          class="text-input"
-          id="student-info"
-          type="text"
-          placeholder="Ex.: Julia, 30 anos, Guaratinguetá"
-          autocomplete="name"
-        >
+  <section id="start" class="card screen active">
+    <div class="start">
+      <div class="kicker" style="color:var(--blue)">Antes de começar</div>
+      <h2>Vamos descobrir seu ponto de partida?</h2>
 
-        <div class="error-message" id="identity-error">
-          Preencha seu nome, idade e cidade para começar.
+      <p>
+        São 10 questões de gramática e compreensão.
+        Responda sem usar tradutor e tente escolher a alternativa que
+        você realmente acredita ser a correta.
+      </p>
+
+      <div class="meta">
+        <span class="pill">10 questões</span>
+        <span class="pill">Resultado imediato</span>
+        <span class="pill">Estimativa inicial</span>
+      </div>
+
+      <div class="student-form">
+
+        <div class="field">
+          <label for="studentInfo">Nome, idade e cidade</label>
+          <input
+            id="studentInfo"
+            type="text"
+            placeholder="Ex.: Ana, 24 anos, Curitiba"
+            autocomplete="name"
+          >
         </div>
 
-        <button class="start-btn" type="button" onclick="startTest()">
+        <button class="btn primary" onclick="startTest()">
           Começar o teste →
         </button>
-      </section>
 
-      <section class="question-card" id="question-card">
-        <div class="progress-area">
-          <div class="progress-top">
-            <span class="progress-label" id="progress-label">Pergunta 1 de 10</span>
-            <span class="progress-percent" id="progress-percent">10%</span>
-          </div>
-
-          <div class="progress-track">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
-        </div>
-
-        <div class="question-number" id="question-number">
-          Pergunta 1
-        </div>
-
-        <p class="question-text" id="question-text"></p>
-
-        <div class="options" id="options"></div>
-
-        <div class="error-message" id="question-error">
-          Escolha uma alternativa para continuar.
-        </div>
-
-        <div class="question-actions">
-          <button class="back-btn" type="button" onclick="previousQuestion()">
-            ← Voltar
-          </button>
-
-          <button class="next-btn" type="button" onclick="nextQuestion()">
-            Próxima →
-          </button>
-        </div>
-      </section>
-
-      <section class="result-card" id="result-card">
-        <div class="result-star">✦</div>
-
-        <h2>Você chegou até aqui!</h2>
-
-        <p>
-          Obrigada por fazer o teste de nivelamento da Gringo Talk.
-          Suas respostas vão nos ajudar a entender melhor o seu
-          ponto de partida e pensar em uma experiência que faça
-          sentido para você.
-        </p>
-
-        <button class="finish-btn" type="button" onclick="finishTest()">
-          Finalizar teste
-        </button>
-
-        <a
-          class="whatsapp-link"
-          href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Fiz%20o%20teste%20de%20nivelamento%20da%20Gringo%20Talk%20e%20queria%20conversar."
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Quero conversar com a Ju →
-        </a>
-      </section>
-
-    </main>
-
-    <div class="footer-note">
-      Gringo Talk Co. · English that feels like you.
+      </div>
     </div>
-  </div>
+  </section>
 
-  <script>
-    const questions = [
-      {
-        text: 'Choose the best answer to complete the sentence: " I ___ brazilian."',
-        options: ["Is", "Are", "Am"]
-      },
-      {
-        text: 'Choose the best answer to complete the sentence: " She ___ my best friend".',
-        options: ["Are", "Is", "Am"]
-      },
-      {
-        text: 'Choose the best answer to complete the sentence: " He ___ his job to tell them he doesn\'t feel good."',
-        options: ["Call", "Calls", "Calling"]
-      },
-      {
-        text: 'Choose the best answer to complete the sentence: " They ___ travel abroad next month".',
-        options: ["is", "are", "will"]
-      },
-      {
-        text: 'Choose the best answer to complete the sentence: " She ___ calling me right now."',
-        options: ["are", "does", "is"]
-      },
-      {
-        text: 'According to the text, "\'I\'ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.\'", What is the main message?',
-        options: [
-          "That people forget what you said",
-          "That people forget what you did",
-          "That people will never forget what you made them feel"
-        ]
-      },
-      {
-        text: 'Choose the correct answer for the verb in the past at the following sentence: " Ramona (leave) the cabin by driving a boat"',
-        options: ["Leaved", "Left", "Lefted"]
-      },
-      {
-        text: 'Choose the correct answer for the next following sentence: " I ____ never been to Canada."',
-        options: ["am", "has", "have"]
-      },
-      {
-        text: '"____ you like coffee?"',
-        options: ["Does", "Are", "Do"]
-      },
-      {
-        text: '"____ you see the new movie?"',
-        options: ["Do", "Did", "Are"]
-      }
-    ];
+  <section id="test" class="card screen">
 
-    let currentQuestion = 0;
-    let answers = Array(questions.length).fill(null);
-    let studentInfo = "";
+    <div class="question-top">
+      <span id="counter"></span>
+      <span id="score">0 acertos</span>
+    </div>
 
-    function startTest() {
-      const input = document.getElementById("student-info");
-      const error = document.getElementById("identity-error");
+    <div class="progress">
+      <i id="bar"></i>
+    </div>
 
-      if (!input.value.trim()) {
-        error.classList.add("show");
-        input.focus();
-        return;
-      }
+    <h2 id="question" class="question"></h2>
 
-      error.classList.remove("show");
-      studentInfo = input.value.trim();
+    <div id="options" class="options"></div>
 
-      document.getElementById("intro").style.display = "none";
-      document.getElementById("identity-card").style.display = "none";
-      document.getElementById("question-card").classList.add("active");
+    <div id="feedback" class="feedback"></div>
 
-      renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    <div class="actions">
+      <button id="back" class="btn secondary" onclick="backQuestion()">
+        ← Voltar
+      </button>
 
-    function renderQuestion() {
-      const question = questions[currentQuestion];
+      <button
+        id="next"
+        class="btn primary right"
+        onclick="nextQuestion()"
+        disabled
+      >
+        Próxima →
+      </button>
+    </div>
 
-      document.getElementById("progress-label").textContent =
-        `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+  </section>
 
-      const percent = Math.round(
-        ((currentQuestion + 1) / questions.length) * 100
-      );
+  <section id="result" class="card screen result">
 
-      document.getElementById("progress-percent").textContent = `${percent}%`;
-      document.getElementById("progress-bar").style.width = `${percent}%`;
+    <div class="kicker result-kicker">Seu resultado</div>
 
-      document.getElementById("question-number").textContent =
-        `Pergunta ${currentQuestion + 1}`;
+    <h2>Você chegou até aqui!</h2>
 
-      document.getElementById("question-text").textContent = question.text;
+    <div class="score-circle">
+      <div id="scoreNumber" class="score-number">0/10</div>
+      <div id="scorePercent" class="score-percent">0% de aproveitamento</div>
+    </div>
 
-      const optionsContainer = document.getElementById("options");
-      optionsContainer.innerHTML = "";
+    <div class="level-card">
+      <div class="level-label">Nível estimado</div>
+      <div id="level" class="level"></div>
+      <strong id="levelName"></strong>
+      <p id="levelDesc" class="level-desc"></p>
+    </div>
 
-      question.options.forEach((option, index) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "option";
+    <div class="disclaimer">
+      <strong>Um resultado para orientar, não para definir.</strong><br>
+      Este é um teste breve, focado principalmente em gramática e
+      compreensão escrita. Ele não avalia todas as habilidades necessárias
+      para determinar oficialmente o nível de inglês, como conversação,
+      pronúncia, listening e produção escrita.
+      <br><br>
+      O resultado serve apenas como uma referência inicial sobre o seu
+      momento atual. Uma avaliação mais completa pode considerar também
+      seus objetivos, sua comunicação e a forma como você aprende.
+    </div>
 
-        const inputId = `option-${currentQuestion}-${index}`;
+    <div class="result-actions">
+      <a
+        class="btn primary"
+        href="https://wa.me/5512981216001?text=Oi%2C%20Ju%21%20Fiz%20o%20teste%20de%20nivelamento%20da%20Gringo%20Talk%20e%20queria%20conversar%20sobre%20as%20aulas."
+      >
+        Falar com a Ju pelo WhatsApp →
+      </a>
 
-        wrapper.innerHTML = `
-          <input
-            type="radio"
-            id="${inputId}"
-            name="question-${currentQuestion}"
-            value="${escapeHtml(option)}"
-            ${answers[currentQuestion] === option ? "checked" : ""}
-          >
-          <label for="${inputId}">
-            <span class="option-circle"></span>
-            <span class="option-text">${escapeHtml(option)}</span>
-          </label>
-        `;
+      <a class="btn secondary" href="/">
+        Voltar para o site
+      </a>
+    </div>
 
-        optionsContainer.appendChild(wrapper);
-      });
+  </section>
 
-      document.getElementById("question-error").classList.remove("show");
+</main>
 
-      const nextButton = document.querySelector(".next-btn");
-      nextButton.textContent =
-        currentQuestion === questions.length - 1
-          ? "Concluir →"
-          : "Próxima →";
-    }
+<footer>
+  GRINGO TALK CO. · English that feels like you.
+</footer>
 
-    function getSelectedAnswer() {
-      const selected = document.querySelector(
-        `input[name="question-${currentQuestion}"]:checked`
-      );
+<script>
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwlWMWm0lYJRxmXIheWknPgwBp3yXC_8Dg-3MaZ-0bJVlpXVr7pC6JR3RF-Ha3LWyo/exec";
 
-      return selected ? selected.value : null;
-    }
+const questions = [
+  {
+    text: 'Choose the best answer to complete the sentence: "I ___ brazilian."',
+    options: ["Is", "Are", "Am"],
+    correct: 2
+  },
+  {
+    text: 'Choose the best answer to complete the sentence: "She ____ my best friend".',
+    options: ["Are", "Is", "Am"],
+    correct: 1
+  },
+  {
+    text: 'Choose the best answer to complete the sentence: "He ____ his job to tell them he doesn\'t feel good."',
+    options: ["Call", "Calls", "Calling"],
+    correct: 1
+  },
+  {
+    text: 'Choose the best answer to complete the sentence: "They ____ travel abroad next month".',
+    options: ["is", "are", "will"],
+    correct: 2
+  },
+  {
+    text: 'Choose the best answer to complete the sentence: "She ___ calling me right now."',
+    options: ["are", "does", "is"],
+    correct: 2
+  },
+  {
+    text: 'According to the text, "\'I\'ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.\'", What is the main message?',
+    options: [
+      "That people forget what you said",
+      "That people forget what you did",
+      "That people will never forget what you made them feel"
+    ],
+    correct: 2
+  },
+  {
+    text: 'Choose the correct answer for the verb in the past at the following sentence: "Ramona (leave) the cabin by driving a boat"',
+    options: ["Leaved", "Left", "Lefted"],
+    correct: 1
+  },
+  {
+    text: 'Choose the correct answer for the next following sentence: "I _____ never been to Canada."',
+    options: ["am", "has", "have"],
+    correct: 2
+  },
+  {
+    text: '"____ you like coffee?"',
+    options: ["Does", "Are", "Do"],
+    correct: 2
+  },
+  {
+    text: '"____ you see the new movie?"',
+    options: ["Do", "Did", "Are"],
+    correct: 1
+  }
+];
 
-    function nextQuestion() {
-      const selected = getSelectedAnswer();
-      const error = document.getElementById("question-error");
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let answered = Array(questions.length).fill(false);
+let studentInfo = "";
 
-      if (!selected) {
-        error.classList.add("show");
-        return;
-      }
+const startScreen = document.getElementById("start");
+const testScreen = document.getElementById("test");
+const resultScreen = document.getElementById("result");
 
-      answers[currentQuestion] = selected;
-      error.classList.remove("show");
+function startTest(){
+  studentInfo = document.getElementById("studentInfo").value.trim();
 
-      if (currentQuestion === questions.length - 1) {
-        showResult();
-        return;
-      }
+  if(!studentInfo){
+    document.getElementById("studentInfo").focus();
+    document.getElementById("studentInfo").style.borderColor = "#d94a5a";
+    return;
+  }
 
-      currentQuestion++;
-      renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  document.getElementById("studentInfo").style.borderColor = "";
 
-    function previousQuestion() {
-      if (currentQuestion === 0) {
-        document.getElementById("question-card").classList.remove("active");
-        document.getElementById("intro").style.display = "block";
-        document.getElementById("identity-card").style.display = "block";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
-      }
+  startScreen.classList.remove("active");
+  testScreen.classList.add("active");
 
-      const selected = getSelectedAnswer();
+  renderQuestion();
+}
 
-      if (selected) {
-        answers[currentQuestion] = selected;
-      }
+function getScore(){
+  return answers.reduce((total, answer, index) => {
+    return total + (answer === questions[index].correct ? 1 : 0);
+  }, 0);
+}
 
-      currentQuestion--;
-      renderQuestion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+function renderQuestion(){
+  const q = questions[current];
+  const score = getScore();
 
-    function showResult() {
-      document.getElementById("question-card").classList.remove("active");
-      document.getElementById("result-card").classList.add("active");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+  document.getElementById("counter").textContent =
+    `Questão ${current + 1} de ${questions.length}`;
 
-      console.log("Dados do teste:", {
-        studentInfo,
-        answers
-      });
-    }
+  document.getElementById("score").textContent =
+    `${score} ${score === 1 ? "acerto" : "acertos"}`;
 
-    async function finishTest() {
-      const button = document.querySelector(".finish-btn");
+  document.getElementById("bar").style.width =
+    `${((current + 1) / questions.length) * 100}%`;
 
+  document.getElementById("question").textContent = q.text;
+
+  const options = document.getElementById("options");
+  options.innerHTML = "";
+
+  q.options.forEach((option, index) => {
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "option";
+    button.textContent = option;
+
+    if(answered[current]){
       button.disabled = true;
-      button.textContent = "Enviando...";
 
-      const payload = {
-        studentInfo: studentInfo,
-        answers: answers
-      };
+      if(index === q.correct){
+        button.classList.add("correct");
+      }
 
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbwlWMWm0lYJRxmXIheWknPgwBp3yXC_8Dg-3MaZ-0bJVlpXVr7pC6JR3RF-Ha3LWyo/exec", {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-          body: JSON.stringify(payload)
-        });
-
-        button.textContent = "Teste enviado ✓";
-
-        const resultText = document.querySelector(".result-card p");
-        resultText.textContent =
-          "Prontinho! Suas respostas foram enviadas para a Gringo Talk. Agora já temos seu ponto de partida para pensar em uma experiência que faça sentido para você.";
-
-      } catch (error) {
-        console.error("Erro ao enviar teste:", error);
-
-        button.disabled = false;
-        button.textContent = "Tentar novamente";
-
-        alert("Não conseguimos enviar o teste agora. Tente novamente em alguns instantes.");
+      if(index === answers[current] && index !== q.correct){
+        button.classList.add("wrong");
       }
     }
 
-    function escapeHtml(value) {
-      return value
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    button.addEventListener("click", () => chooseAnswer(index));
+
+    options.appendChild(button);
+  });
+
+  const feedback = document.getElementById("feedback");
+
+  if(answered[current]){
+    if(answers[current] === q.correct){
+      feedback.textContent = "✓ Acertou! Muito bem.";
+      feedback.className = "feedback success";
+    }else{
+      feedback.textContent = `Quase! A resposta correta é "${q.options[q.correct]}".`;
+      feedback.className = "feedback error";
     }
-  </script>
+  }else{
+    feedback.textContent = "";
+    feedback.className = "feedback";
+  }
+
+  document.getElementById("back").disabled = current === 0;
+
+  const next = document.getElementById("next");
+  next.disabled = !answered[current];
+  next.textContent =
+    current === questions.length - 1
+      ? "Ver meu resultado →"
+      : "Próxima →";
+}
+
+function chooseAnswer(index){
+  if(answered[current]) return;
+
+  answers[current] = index;
+  answered[current] = true;
+
+  renderQuestion();
+}
+
+function nextQuestion(){
+  if(!answered[current]) return;
+
+  if(current < questions.length - 1){
+    current++;
+    renderQuestion();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }else{
+    showResult();
+  }
+}
+
+function backQuestion(){
+  if(current > 0){
+    current--;
+    renderQuestion();
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+}
+
+function getLevel(score){
+  if(score <= 2){
+    return {
+      level:"A1",
+      name:"Beginner",
+      desc:"O resultado sugere um ponto de partida próximo ao nível A1, com foco em construir uma base de inglês."
+    };
+  }
+
+  if(score <= 4){
+    return {
+      level:"A2",
+      name:"Elementary",
+      desc:"O resultado sugere um nível próximo ao A2, indicando uma base inicial para situações e estruturas mais comuns."
+    };
+  }
+
+  if(score <= 7){
+    return {
+      level:"B1",
+      name:"Intermediate",
+      desc:"O resultado sugere um nível próximo ao B1, com uma base intermediária para compreender e utilizar estruturas mais comuns."
+    };
+  }
+
+  if(score <= 9){
+    return {
+      level:"B2",
+      name:"Upper-Intermediate",
+      desc:"O resultado sugere um nível próximo ao B2, indicando maior autonomia com estruturas e situações de uso do inglês."
+    };
+  }
+
+  return {
+    level:"C1*",
+    name:"Advanced",
+    desc:"Você teve um desempenho muito alto neste teste. Isso pode indicar um nível avançado, mas uma avaliação completa seria necessária para confirmar essa estimativa."
+  };
+}
+
+function sendToGoogleForms(){
+  const payload = {
+    studentInfo: studentInfo,
+    answers: answers.map((answer, index) => {
+      return questions[index].options[answer];
+    })
+  };
+
+  fetch(FORM_ENDPOINT, {
+    method:"POST",
+    mode:"no-cors",
+    headers:{
+      "Content-Type":"text/plain;charset=utf-8"
+    },
+    body:JSON.stringify(payload)
+  }).catch(() => {
+    // O envio continua silencioso para o usuário.
+    // O resultado do teste não depende do Forms.
+  });
+}
+
+function showResult(){
+  const score = getScore();
+  const percent = score * 10;
+  const level = getLevel(score);
+
+  testScreen.classList.remove("active");
+  resultScreen.classList.add("active");
+
+  document.getElementById("scoreNumber").textContent =
+    `${score}/10`;
+
+  document.getElementById("scorePercent").textContent =
+    `${percent}% de aproveitamento`;
+
+  document.getElementById("level").textContent =
+    level.level;
+
+  document.getElementById("levelName").textContent =
+    level.name;
+
+  document.getElementById("levelDesc").textContent =
+    level.desc;
+
+  sendToGoogleForms();
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+
 </body>
 </html>
