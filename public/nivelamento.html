@@ -236,6 +236,8 @@ a{text-decoration:none;color:inherit}
   color:#30415c;
 }
 
+#test{min-height:620px;}
+
 .question-top{
   display:flex;
   justify-content:space-between;
@@ -617,7 +619,7 @@ footer{
 </footer>
 
 <script>
-const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwlWMWm0lYJRxmXIheWknPgwBp3yXC_8Dg-3MaZ-0bJVlpXVr7pC6JR3RF-Ha3LWyo/exec";
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwlWMWm0lYRxmXIheWknPgwBp3yXC_8Dg-3MaZ-0bJVlpXVr7pC6JR3RF-Ha3LWyo/exec";
 
 const questions = [
   {
@@ -731,7 +733,7 @@ function renderQuestion(){
 
     button.type = "button";
     button.className = "option";
-    button.textContent = option;
+    button.textContent = String.fromCharCode(97 + index) + ') ' + option;
 
     if(answered[current]){
       button.disabled = true;
@@ -790,7 +792,6 @@ function nextQuestion(){
   if(current < questions.length - 1){
     current++;
     renderQuestion();
-    window.scrollTo({top:0,behavior:"smooth"});
   }else{
     showResult();
   }
@@ -800,7 +801,6 @@ function backQuestion(){
   if(current > 0){
     current--;
     renderQuestion();
-    window.scrollTo({top:0,behavior:"smooth"});
   }
 }
 
@@ -848,7 +848,7 @@ function sendToGoogleForms(){
   const payload = {
     studentInfo: studentInfo,
     answers: answers.map((answer, index) => {
-      return questions[index].options[answer];
+      return String.fromCharCode(97 + answer) + ') ' + questions[index].options[answer];
     })
   };
 
